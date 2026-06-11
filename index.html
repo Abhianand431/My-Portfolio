@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Anand - HR Talent Acquisition Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Base and Theme Styles --- */
+        :root {
+            --hue: 160; /* Elegant Teal for HR/Corporate vibe */
+        }
+
+        #design-container {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        /* Light Theme */
+        #design-container[data-theme="light"] {
+            --bg-color: #f8fafc;
+            --nav-bg-color: rgba(255, 255, 255, 0.85);
+            --card-bg-color: #ffffff;
+            --primary-color: hsl(var(--hue), 85%, 38%);
+            --secondary-color: hsl(210, 50%, 40%);
+            --heading-color: #1e293b;
+            --text-color: #475569;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(15, 23, 42, 0.08);
+            --shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        /* Dark Theme */
+        #design-container[data-theme="dark"] {
+            --bg-color: #0f172a;
+            --nav-bg-color: rgba(15, 23, 42, 0.85);
+            --card-bg-color: #1e293b;
+            --primary-color: hsl(var(--hue), 75%, 45%);
+            --secondary-color: hsl(210, 40%, 60%);
+            --heading-color: #f1f5f9;
+            --text-color: #cbd5e1;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        /* Corporate Premium / Amethyst Theme */
+        #design-container[data-theme="corporate"] {
+            --bg-color: #f4f5f7;
+            --nav-bg-color: rgba(255, 255, 255, 0.9);
+            --card-bg-color: #ffffff;
+            --primary-color: #6366f1; /* Indigo corporate shade */
+            --secondary-color: #4f46e5;
+            --heading-color: #1f2937;
+            --text-color: #4b5563;
+            --border-color: #e5e7eb;
+            --shadow-color: rgba(31, 41, 55, 0.08);
+            --shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        /* Soft Pastel Minimalist Theme */
+        #design-container[data-theme="pastel"] {
+            --bg-color: #faf6f0;
+            --nav-bg-color: rgba(255, 255, 255, 0.85);
+            --card-bg-color: #ffffff;
+            --primary-color: #d4a373; /* Earthy warm tone */
+            --secondary-color: #ccd5ae;
+            --heading-color: #4a4e69;
+            --text-color: #606c38;
+            --border-color: #e9edc9;
+            --shadow-color: rgba(139, 115, 85, 0.1);
+            --shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        /* --- Scroll Progress Bar --- */
+        #scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* --- General & Utility Styles --- */
+        html { scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        .container { max-width: 1200px; margin: auto; padding: 0 2rem; }
+        section {
+            padding: 5rem 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--heading-color); font-weight: 700; position: relative; }
+        .section-subtitle { text-align: center; color: var(--primary-color); font-weight: 500; margin-bottom: 4rem; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        
+        .btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2.2rem; background: var(--primary-color); color: #fff; border: 2px solid transparent; border-radius: 50px; cursor: pointer; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--shadow-color); background-color: var(--secondary-color); }
+        .btn-secondary { background: transparent; color: var(--primary-color); border-color: var(--primary-color); }
+        .btn-secondary:hover { background: var(--primary-color); color: #fff; }
+
+        /* --- Scroll Animation Classes --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Header & Navigation --- */
+        .header { position: sticky; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--nav-bg-color); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 2px 10px var(--shadow-color); }
+        .nav { display: flex; justify-content: space-between; align-items: center; height: 5rem; }
+        .nav__logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav__logo span { color: var(--text-color); font-weight: 400; }
+        .nav__menu { display: flex; align-items: center; }
+        .nav__list { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; gap: 2rem; }
+        .nav__link { text-decoration: none; color: var(--heading-color); font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
+        .nav__link:hover, .nav__link.active { color: var(--primary-color); }
+        .nav__toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--heading-color); }
+        
+        /* --- Theme Switcher --- */
+        .theme-switcher { display: flex; align-items: center; gap: 0.5rem; margin-left: 1.5rem; border-left: 1px solid var(--border-color); padding-left: 1.5rem; }
+        .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s; position: relative; }
+        .theme-btn:hover { transform: scale(1.15); }
+        .theme-btn.light { background-color: #ffffff; border-color: #cbd5e1; } 
+        .theme-btn.dark { background-color: #0f172a; } 
+        .theme-btn.corporate { background-color: #6366f1; } 
+        .theme-btn.pastel { background-color: #d4a373; }
+        .theme-btn.active { border-color: var(--primary-color); transform: scale(1.2); box-shadow: 0 0 8px var(--primary-color); }
+
+        /* --- Hero Section --- */
+        .hero { padding: 0; min-height: calc(100vh - 5rem); display: flex; align-items: center; position: relative; }
+        .hero__container { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 4rem; }
+        .hero__content h1 { font-size: 3.5rem; color: var(--heading-color); line-height: 1.2; margin-bottom: 0.5rem; } 
+        .hero__content h1 span { color: var(--primary-color); }
+        .hero__subtitle { font-size: 1.5rem; color: var(--text-color); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .typed-cursor { font-weight: 300; animation: blink 0.7s infinite; color: var(--primary-color); }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .hero__description { margin: 0 0 2.5rem; color: var(--text-color); font-size: 1.05rem; }
+        .hero__buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
+        .hero__socials { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .hero__socials a { color: var(--text-color); font-size: 1.8rem; transition: color 0.3s, transform 0.3s; }
+        .hero__socials a:hover { color: var(--primary-color); transform: translateY(-3px); }
+        .hero__image-wrapper { position: relative; display: flex; justify-content: center; align-items: center; }
+        .hero__image-bg { position: absolute; width: 400px; height: 400px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; filter: blur(10px); opacity: 0.15; animation: morphing 8s ease-in-out infinite; }
+        .hero__avatar { width: 340px; height: 340px; background: var(--card-bg-color); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 8px solid var(--border-color); box-shadow: var(--shadow); z-index: 1; text-align: center; padding: 2rem; }
+        .hero__avatar i { font-size: 5.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .hero__avatar-title { font-weight: 700; color: var(--heading-color); margin: 0; font-size: 1.4rem; }
+        .hero__avatar-subtitle { font-size: 0.85rem; color: var(--text-color); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.25rem; }
+        @keyframes morphing { 0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
+
+        /* --- Stats / Impact Section --- */
+        .stats { background: var(--card-bg-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 3rem 0; min-height: auto; }
+        .stats__container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+        .stat-item h3 { font-size: 2.8rem; color: var(--primary-color); margin: 0; font-weight: 700; }
+        .stat-item p { margin: 0.5rem 0 0; font-weight: 500; color: var(--heading-color); font-size: 0.95rem; }
+
+        /* --- About Section --- */
+        .about__container { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: center; }
+        .about__graphic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .about__badge { background: var(--card-bg-color); padding: 2rem 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow); text-align: center; transition: transform 0.3s; }
+        .about__badge:hover { transform: translateY(-5px); }
+        .about__badge i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .about__badge h4 { margin: 0; color: var(--heading-color); font-size: 1.1rem; }
+        .about__badge p { margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-color); }
+        .about__content h3 { font-size: 2rem; color: var(--heading-color); margin-top: 0; margin-bottom: 1.5rem; }
+        .about__award { margin-top: 2rem; background: linear-gradient(135deg, rgba(212, 163, 115, 0.1), rgba(204, 213, 174, 0.1)); border-left: 4px solid var(--primary-color); padding: 1.2rem; border-radius: 0 12px 12px 0; display: flex; gap: 1rem; align-items: flex-start; }
+        .about__award i { color: #f59e0b; font-size: 1.5rem; margin-top: 0.2rem; }
+        .about__award p { margin: 0; font-size: 0.95rem; font-weight: 500; color: var(--heading-color); }
+
+        /* --- Skills Section --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .skills-category { background: var(--card-bg-color); padding: 2.5rem 2rem; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: transform 0.3s; }
+        .skills-category:hover { transform: translateY(-5px); }
+        .skills-category h3 { font-size: 1.3rem; color: var(--heading-color); margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem; }
+        .skills-category h3 i { color: var(--primary-color); }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-chip { background: var(--bg-color); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.85rem; font-weight: 500; color: var(--text-color); display: inline-flex; align-items: center; gap: 0.4rem; transition: background-color 0.3s, color 0.3s; }
+        .skill-chip:hover { background-color: var(--primary-color); color: #fff; }
+
+        /* --- Re-engineered Modern Experience Dashboard --- */
+        .exp-dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2.5rem;
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .exp-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-right: 1px solid var(--border-color);
+            padding-right: 2rem;
+        }
+
+        .tab-pill {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .tab-pill:hover {
+            border-color: var(--primary-color);
+            background: var(--card-bg-color);
+        }
+
+        .tab-pill.active {
+            background: var(--card-bg-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            position: relative;
+        }
+
+        .tab-pill.active::after {
+            content: '';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--primary-color);
+        }
+
+        .tab-pill h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        .tab-pill p {
+            margin: 4px 0 0 0;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .exp-panel-container {
+            position: relative;
+        }
+
+        .exp-panel {
+            display: none;
+            animation: paneFadeIn 0.5s ease forwards;
+        }
+
+        .exp-panel.active {
+            display: block;
+        }
+
+        @keyframes paneFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .exp-role-title h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin: 0;
+        }
+
+        .exp-role-title h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 6px 0 0 0;
+            font-weight: 600;
+        }
+
+        .exp-time-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .impact-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .impact-mini-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .impact-mini-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .impact-mini-card i {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 3px;
+        }
+
+        .impact-mini-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .win-banner {
+            background: var(--bg-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .win-banner i {
+            font-size: 1.8rem;
+            color: #f59e0b;
+        }
+
+        .win-banner h5 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        .win-banner p {
+            margin: 4px 0 0 0;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        /* --- Initiatives & Portfolios (Projects) Section --- */
+        .projects__container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .project__card { background: var(--card-bg-color); border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border-color); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; padding: 2rem; }
+        .project__card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px var(--shadow-color); }
+        .project__icon-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .project__icon-header i.main-icon { font-size: 2.5rem; color: var(--primary-color); }
+        .project__icon-header .client-tag { font-size: 0.75rem; text-transform: uppercase; background: var(--bg-color); padding: 0.3rem 0.7rem; border-radius: 4px; font-weight: 600; border: 1px solid var(--border-color); letter-spacing: 0.5px; }
+        .project__card h3 { color: var(--heading-color); margin: 0 0 0.75rem 0; font-size: 1.3rem; }
+        .project__card p { font-size: 0.95rem; color: var(--text-color); margin: 0 0 1.5rem 0; flex-grow: 1; }
+        .project__tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tag { font-size: 0.8rem; background-color: var(--bg-color); color: var(--heading-color); padding: 0.3rem 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); font-weight: 500; }
+
+        /* --- Education & Matrix Section --- */
+        .edu-matrix-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
+        .education__card, .clients__card { background: var(--card-bg-color); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--border-color); }
+        .education__card h3, .clients__card h3 { color: var(--heading-color); margin-top: 0; margin-bottom: 2rem; font-size: 1.4rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem; }
+        .education__card h3 i, .clients__card h3 i { color: var(--primary-color); }
+        
+        .edu-item h4 { margin: 0 0 0.25rem 0; font-size: 1.2rem; color: var(--heading-color); }
+        .edu-item p { margin: 0 0 0.5rem 0; color: var(--text-color); }
+        .edu-item span { color: var(--primary-color); font-weight: 600; font-size: 0.9rem; }
+        
+        .client-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .client-logo-badge { background: var(--bg-color); border: 1px solid var(--border-color); padding: 0.75rem; text-align: center; border-radius: 8px; font-weight: 600; font-size: 0.85rem; color: var(--text-color); transition: all 0.2s; cursor: default; }
+        .client-logo-badge:hover { background-color: var(--card-bg-color); border-color: var(--primary-color); color: var(--primary-color); }
+
+        /* --- Contact Section --- */
+        .contact__container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; }
+        .contact-info h3 { color: var(--heading-color); margin-top: 0; margin-bottom: 1rem; font-size: 1.8rem; }
+        .contact-info p { margin-bottom: 2rem; color: var(--text-color); }
+        .contact-method { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-method .icon-box { width: 50px; height: 50px; background: var(--card-bg-color); border: 1px solid var(--border-color); display: flex; justify-content: center; align-items: center; border-radius: 12px; color: var(--primary-color); font-size: 1.2rem; box-shadow: var(--shadow); }
+        .contact-method div p { margin: 0; font-size: 0.85rem; color: var(--text-color); }
+        .contact-method div a, .contact-method div span { font-weight: 600; color: var(--heading-color); text-decoration: none; font-size: 1.05rem; }
+        .contact-method div a:hover { color: var(--primary-color); }
+        
+        .contact__form input, .contact__form textarea { width: 100%; padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid var(--border-color); background: var(--card-bg-color); color: var(--text-color); margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif; font-size: 0.95rem; transition: border-color 0.3s, box-shadow 0.3s; }
+        .contact__form input:focus, .contact__form textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 10px var(--shadow-color); }
+        
+        /* --- Footer --- */
+        .footer { background: var(--card-bg-color); padding: 3rem 0; text-align: center; border-top: 1px solid var(--border-color); min-height: auto; position: relative; }
+        .footer__socials { margin-bottom: 1.5rem; }
+        .footer__socials a { color: var(--text-color); margin: 0 1rem; font-size: 1.6rem; transition: color 0.3s; }
+        .footer__socials a:hover { color: var(--primary-color); }
+        .footer__quote { font-style: italic; color: var(--text-color); max-width: 500px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
+        .footer p { margin: 0; font-size: 0.9rem; color: var(--text-color); }
+        
+        /* Back To Top Button */
+        #back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 45px; height: 45px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: var(--shadow); }
+        #back-to-top.show { opacity: 1; visibility: visible; }
+        #back-to-top:hover { background: var(--secondary-color); transform: translateY(-3px); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects__container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 992px) {
+            .hero__container, .about__container, .contact__container, .edu-matrix-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero__content { order: 2; }
+            .hero__image-wrapper { order: 1; margin-bottom: 2rem; }
+            .hero__buttons, .hero__socials { justify-content: center; }
+            .about__graphic { order: 1; margin-bottom: 2rem; }
+            .about__content { order: 2; text-align: left; }
+            .stats__container { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+            .contact-info { text-align: left; }
+            .contact-method { justify-content: flex-start; }
+            .exp-dashboard { grid-template-columns: 1fr; }
+            .exp-tabs { flex-direction: row; border-right: none; border-bottom: 1px solid var(--border-color); padding-right: 0; padding-bottom: 1.5rem; overflow-x: auto; }
+            .tab-pill { flex: 1; min-width: 200px; text-align: center; }
+            .tab-pill.active::after { display: none; }
+            section { min-height: auto; padding: 5rem 0; }
+        }
+
+        @media (max-width: 768px) { 
+            .nav__menu { position: fixed; top: 5rem; left: -100%; width: 100%; height: calc(100vh - 5rem); background: var(--nav-bg-color); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: left 0.3s ease-in-out; }
+            .nav__menu.active { left: 0; }
+            .nav__list { flex-direction: column; justify-content: center; height: 100%; gap: 2.5rem; }
+            .nav__toggle { display: block; }
+            .theme-switcher { margin-left: 0; border-left: none; padding-left: 0; margin-top: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .client-logos { grid-template-columns: repeat(2, 1fr); }
+            .impact-cards-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 90%; }
+            .section-title { font-size: 2.2rem; }
+            .hero__content h1 { font-size: 2.6rem; }
+            .hero__avatar { width: 280px; height: 280px; }
+            .stats__container { grid-template-columns: 1fr; }
+            .client-logos { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body id="design-container" data-theme="dark">
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">Abhishek <span>Anand</span></a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+                    <li class="nav__item"><a href="#initiatives" class="nav__link">Initiatives</a></li>
+                    <li class="nav__item"><a href="#education" class="nav__link">Background</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+                <div class="theme-switcher">
+                    <button class="theme-btn light" data-theme="light" title="Corporate Light"></button>
+                    <button class="theme-btn dark" data-theme="dark" title="Tech Dark"></button>
+                    <button class="theme-btn corporate" data-theme="corporate" title="Premium Indigo"></button>
+                    <button class="theme-btn pastel" data-theme="pastel" title="Earthy Warm"></button>
+                </div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" id="home">
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h1>Hi, I'm <br><span>Abhishek Anand</span></h1>
+                    <div class="hero__subtitle">
+                        <span>Human Resource Professional | </span>
+                        <span id="typed-text"></span><span class="typed-cursor">|</span>
+                    </div>
+                    <p class="hero__description">
+                        Dedicated and result-oriented <strong>IT Recruiter</strong> with over <strong>5+ years of rich experience</strong> in talent acquisition, staffing, and strategic human capital placement across premium domestic accounts.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#contact" class="btn">Connect Directly <i class="fas fa-paper-plane"></i></a>
+                        <a href="#initiatives" class="btn btn-secondary">View Case Studies</a>
+                    </div>
+                     <div class="hero__socials">
+                        <a href="https://www.linkedin.com/in/abhishek-anand-b2ab8225b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:abhi.anand431@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+917327877587" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+              <div class="hero__image-wrapper">
+    <div class="hero__image-bg"></div>
+    <div class="hero__avatar">
+        
+        <img src="profile.jpg" alt="Abhishek Anand" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary-color);">
+        
+        <h3 class="hero__avatar-title">Abhishek Anand</h3>
+        <p class="hero__avatar-subtitle">Talent Acquisition Specialist</p>
+    </div>
+</div>
+            </div>
+        </section>
+
+        <!-- STATS COUNTER SECTION -->
+        <section class="stats">
+            <div class="stats__container container">
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Years Recruitment Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Full Lifecycle Sourcing</p>
+                </div>
+                <div class="stat-item">
+                    <h3>40+</h3>
+                    <p>Niche Core Tech Frameworks</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12+</h3>
+                    <p>Enterprise Tier-1 Clients</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="about reveal" id="about">
+            <div class="container">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="section-subtitle">Bridging Potential &amp; Performance</div>
+                <div class="about__container">
+                    <div class="about__graphic">
+                        <div class="about__badge">
+                            <i class="fas fa-search-dollar"></i>
+                            <h4>Niche Sourcing</h4>
+                            <p>Expertise in Boolean mapping on premium job boards.</p>
+                        </div>
+                        <div class="about__badge">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Stakeholder Management</h4>
+                            <p>Direct weekly sync calls with corporate business heads.</p>
+                        </div>
+                        <div class="about__badge">
+                            <i class="fas fa-users"></i>
+                            <h4>C2H &amp; Permanent</h4>
+                            <p>Flexible staffing architectures for fast onboarding.</p>
+                        </div>
+                        <div class="about__badge">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Fulfillment Tracking</h4>
+                            <p>Data-driven candidate pipelines &amp; onboarding metrics.</p>
+                        </div>
+                    </div>
+                    <div class="about__content">
+                        <h3>Connecting Elite Talent with Scalable Modern Opportunities</h3>
+                        <p class="about__description">
+                            Armed with a specialized technical background (BTech), I bridge the gap between engineering complexities and human resource strategies. I possess an extensive history of supervising complete recruitment lifecycles—ranging from initial dynamic sourcing and first-tier structural profiling to intricate payroll negotiation and seamless deployment transitions.
+                        </p>
+                        <p class="about__description">
+                            As a quick learner who easily updates skills to match market changes, I specialize in looking past shallow keywords to assess communication skills, technical competency, and cultural alignment. This ensures long-term retention and rapid project fulfillment for demanding assignments.
+                        </p>
+                        <div class="about__award">
+                            <i class="fas fa-award"></i>
+                            <p>Recipient of multiple recognition awards from Delivery and Hiring Managers for consistently closing critical accounts and exceeding organizational headcount expectations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="skills reveal" id="skills">
+            <div class="container">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="section-subtitle">Technical Sourcing Intel &amp; HR Frameworks</div>
+                <div class="skills-grid">
+                    <!-- HR & Sourcing Pillar -->
+                    <div class="skills-category">
+                        <h3><i class="fas fa-sliders-h"></i> Talent Acquisition</h3>
+                        <div class="skills-list">
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Boolean Search</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Full Lifecycle Recruitment</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> C2H Staffing Model</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Permanent Staffing</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Sourcing Optimization</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Candidate Profiling</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Offer Negotiation</span>
+                            <span class="skill-chip"><i class="fas fa-check-circle"></i> Onboarding Support</span>
+                        </div>
+                    </div>
+                    <!-- Platforms & Tools Pillar -->
+                    <div class="skills-category">
+                        <h3><i class="fas fa-tools"></i> Systems &amp; Channels</h3>
+                        <div class="skills-list">
+                            <span class="skill-chip"><i class="fas fa-briefcase"></i> Naukri Portal</span>
+                            <span class="skill-chip"><i class="fab fa-linkedin-in"></i> LinkedIn Recruiter</span>
+                            <span class="skill-chip"><i class="fas fa-search"></i> Instahyre</span>
+                            <span class="skill-chip"><i class="fas fa-hashtag"></i> Pyjama HR</span>
+                            <span class="skill-chip"><i class="fas fa-cube"></i> Zoho ATS</span>
+                            <span class="skill-chip"><i class="fas fa-database"></i> Talent Recruit ATS</span>
+                            <span class="skill-chip"><i class="fas fa-network-wired"></i> Database Mining</span>
+                            <span class="skill-chip"><i class="fas fa-globe"></i> Indeed / Monster</span>
+                        </div>
+                    </div>
+                    <!-- Tech Verticals Hired -->
+                    <div class="skills-category">
+                        <h3><i class="fas fa-code"></i> Sourcing Domains</h3>
+                        <div class="skills-list">
+                            <span class="skill-chip"><i class="fab fa-java"></i> Java / FullStack</span>
+                            <span class="skill-chip"><i class="fab fa-microsoft"></i> .NET Core / Azure</span>
+                            <span class="skill-chip"><i class="fas fa-server"></i> Big Data / Hadoop</span>
+                            <span class="skill-chip"><i class="fab fa-aws"></i> AWS Data Architects</span>
+                            <span class="skill-chip"><i class="fas fa-robot"></i> AI / ML Models</span>
+                            <span class="skill-chip"><i class="fas fa-network-wired"></i> SAN / NAS Storage</span>
+                            <span class="skill-chip"><i class="fas fa-shield-alt"></i> DevOps / Cloud Engineering</span>
+                            <span class="skill-chip"><i class="fas fa-user-shield"></i> Leadership Roles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION (RE-ENGINEERED TABBED DASHBOARD) -->
+        <section class="experience reveal" id="experience">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="section-subtitle">Chronological Professional Background</div>
+                
+                <div class="exp-dashboard">
+                    <!-- Tab Links List (Left Column) -->
+                    <div class="exp-tabs">
+                        <div class="tab-pill active" onclick="switchExpTab(event, 'kbc-panel')">
+                            <h3>KBC</h3>
+                            <p>Specialist - IT Recruitment</p>
+                        </div>
+                        <div class="tab-pill" onclick="switchExpTab(event, 'sfj-panel')">
+                            <h3>SFJ Business Solutions</h3>
+                            <p>Technical Recruiter</p>
+                        </div>
+                    </div>
+
+                    <!-- Display Panel Contents (Right Column) -->
+                    <div class="exp-panel-container">
+                        <!-- Panel 1: KBC -->
+                        <div id="kbc-panel" class="exp-panel active">
+                            <div class="exp-header">
+                                <div class="exp-role-title">
+                                    <h2>Specialist - IT Recruitment</h2>
+                                    <h4>KBC — Bangalore, India</h4>
+                                </div>
+                                <div class="exp-time-tag">
+                                    <i class="fas fa-calendar-alt"></i> 11/2023 – 01/2026
+                                </div>
+                            </div>
+                            <div class="impact-cards-grid">
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <p>Managed the comprehensive IT recruitment lifecycle for highly niche, enterprise-level technical positions.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-route"></i>
+                                    <p>Handled pipeline building from targeted candidate sourcing and initial evaluation to interview alignment.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-id-card-alt"></i>
+                                    <p>Evaluated candidates through detailed initial screenings assessing communication clarity, technical skills, and alignments.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-database"></i>
+                                    <p>Maintained a meticulously updated database of software talent categorized by clear technical skills and distinct seniority.</p>
+                                </div>
+                            </div>
+                            <div class="win-banner">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <h5>Key Win: Expansion Closure</h5>
+                                    <p>Consistently scaled pipeline deployment capacities for new accounts, earning explicit appreciation milestones from top Delivery Leads.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: SFJ -->
+                        <div id="sfj-panel" class="exp-panel">
+                            <div class="exp-header">
+                                <div class="exp-role-title">
+                                    <h2>Technical Recruiter</h2>
+                                    <h4>SFJ Business Solutions Pvt. Ltd — Bangalore, India</h4>
+                                </div>
+                                <div class="exp-time-tag">
+                                    <i class="fas fa-calendar-alt"></i> 09/2020 – 11/2023
+                                </div>
+                            </div>
+                            <div class="impact-cards-grid">
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-cubes"></i>
+                                    <p>Directed end-to-end recruitment pipelines managing concurrent high-volume bulk needs and specialized profiles.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-chart-line"></i>
+                                    <p>Leveraged advanced ATS tools including Talent Recruit and Zoho to track processing speeds and submission metrics.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-users-cog"></i>
+                                    <p>Collaborated closely with functional leaders and department heads on ongoing resource allocation and workforce planning.</p>
+                                </div>
+                                <div class="impact-mini-card">
+                                    <i class="fas fa-sync"></i>
+                                    <p>Led regular sync updates with hiring managers to share active recruitment statuses and tracks.</p>
+                                </div>
+                            </div>
+                            <div class="win-banner">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h5>Key Win: System Synergy</h5>
+                                    <p>Balanced workflows perfectly by cross-aligning Vendor Operations, sourcing, and on-boarding wings to fulfill roles on time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INITIATIVES / RECRUITMENT CASE STUDIES -->
+        <section class="projects reveal" id="initiatives">
+            <div class="container">
+                <h2 class="section-title">Targeted Hiring Frameworks</h2>
+                <div class="section-subtitle">Case Studies in Specialized Technical Placement</div>
+                <div class="projects__container">
+                    <!-- Case Study 1 -->
+                    <div class="project__card">
+                        <div class="project__icon-header">
+                            <i class="fas fa-cloud-upload-alt main-icon"></i>
+                            <span class="client-tag">Niche Cloud Placements</span>
+                        </div>
+                        <h3>Cloud, Security &amp; Enterprise Architecture</h3>
+                        <p>Successfully sourced and built candidate funnels for high-end enterprise projects. Targeted premium engineering professionals with hard-to-find skill cross-sections across modern enterprise environments.</p>
+                        <div class="project__tech">
+                            <span class="tech-tag">.NET + GCP</span>
+                            <span class="tech-tag">Snowflake Devs</span>
+                            <span class="tech-tag">AWS Data Architects</span>
+                            <span class="tech-tag">Azure AKS DevOps</span>
+                        </div>
+                    </div>
+                    <!-- Case Study 2 -->
+                    <div class="project__card">
+                        <div class="project__icon-header">
+                            <i class="fas fa-database main-icon"></i>
+                            <span class="client-tag">Data Engineering Ecosystems</span>
+                        </div>
+                        <h3>Big Data, Intelligence &amp; Data Warehousing</h3>
+                        <p>Managed high-priority talent acquisition pipelines for complex analytical projects requiring advanced processing architecture skills. Screened profiles to match rigorous client infrastructure specifications.</p>
+                        <div class="project__tech">
+                            <span class="tech-tag">Hadoop</span>
+                            <span class="tech-tag">PySpark &amp; Hive</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Informatica / Cognos</span>
+                        </div>
+                    </div>
+                    <!-- Case Study 3 -->
+                    <div class="project__card">
+                        <div class="project__icon-header">
+                            <i class="fas fa-hdd main-icon"></i>
+                            <span class="client-tag">Infrastructure Verticals</span>
+                        </div>
+                        <h3>Enterprise Storage &amp; Infrastructure Networking</h3>
+                        <p>Designed targeted boolean sourcing paths for highly specialized storage environments and hardware virtualization projects. Mapped hidden candidate networks across infrastructure spaces.</p>
+                        <div class="project__tech">
+                            <span class="tech-tag">SAN / NAS Storage</span>
+                            <span class="tech-tag">Data Protection / DR</span>
+                            <span class="tech-tag">VMware vSphere</span>
+                            <span class="tech-tag">NetApp &amp; IBM Storage</span>
+                        </div>
+                    </div>
+                    <!-- Case Study 4 -->
+                    <div class="project__card">
+                        <div class="project__icon-header">
+                            <i class="fas fa-user-shield main-icon"></i>
+                            <span class="client-tag">Leadership Mapping</span>
+                        </div>
+                        <h3>Executive Search &amp; Leadership Placement</h3>
+                        <p>Successfully closed senior leadership and delivery positions through careful candidate profiling and tailored corporate screening models, aligning with high-level stakeholder requirements.</p>
+                        <div class="project__tech">
+                            <span class="tech-tag">Project Managers</span>
+                            <span class="tech-tag">Senior Delivery Managers</span>
+                            <span class="tech-tag">Office Managers</span>
+                            <span class="tech-tag">SAP / ERP Leads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CLIENT MATRIX SECTION -->
+        <section class="education reveal" id="education">
+            <div class="container">
+                <h2 class="section-title">Background &amp; Client Matrix</h2>
+                <div class="section-subtitle">Academic Credentials &amp; Partner Accounts</div>
+                <div class="edu-matrix-grid">
+                    <!-- Academic Block -->
+                    <div class="education__card">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="edu-item">
+                            <h4>Bachelor of Technology (BTech)</h4>
+                            <p>Biju Patnaik University of Technology</p>
+                            <span>Technical Foundation for Accurate IT Recruiter Screening</span>
+                        </div>
+                    </div>
+                    <!-- Client Matrix Block -->
+                    <div class="clients__card">
+                        <h3><i class="fas fa-building"></i> Domestic Clients Served</h3>
+                        <div class="client-logos">
+                            <div class="client-logo-badge">Altimetrik</div>
+                            <div class="client-logo-badge">Tata Elxsi</div>
+                            <div class="client-logo-badge">Ernst &amp; Young (E&amp;Y)</div>
+                            <div class="client-logo-badge">eInfochips</div>
+                            <div class="client-logo-badge">Wissen Infotech</div>
+                            <div class="client-logo-badge">Wipro</div>
+                            <div class="client-logo-badge">Mphasis</div>
+                            <div class="client-logo-badge">Tech Mahindra</div>
+                            <div class="client-logo-badge">LTIMindtree</div>
+                            <div class="client-logo-badge">Nokia</div>
+                            <div class="client-logo-badge">ITC Infotech</div>
+                            <div class="client-logo-badge">Algoshack</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact reveal" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-subtitle">Available for Immediate Onboarding</div>
+                <div class="contact__container">
+                    <div class="contact-info">
+                        <h3>Let's build optimized workforce solutions together.</h3>
+                        <p>Open to conversation regarding full-time corporate opportunities, senior recruitment roles, and talent strategy placement needs.</p>
+                        
+                        <div class="contact-method">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <p>Email Me</p>
+                                <a href="mailto:abhi.anand431@gmail.com">abhi.anand431@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <p>Call or WhatsApp</p>
+                                <a href="tel:+917327877587">+91 7327877587</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <p>Current Location</p>
+                                <span>Bangalore, Karnataka, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact__form" id="contact-form">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="email" id="email" placeholder="Your Email Address" required>
+                        <textarea id="message" placeholder="Describe your staffing or hiring requirements..." rows="5" required></textarea>
+                        <button type="submit" class="btn">Send Hiring Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__socials">
+                <a href="https://www.linkedin.com/in/abhishek-anand-b2ab8225b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:abhi.anand431@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="footer__quote">"Connecting elite human capital with advanced corporate trajectories."</p>
+            <p>&copy; 2026 Abhishek Anand. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <div id="back-to-top" title="Back To Top"><i class="fas fa-chevron-up"></i></div>
+
+    <!-- CODE CONTROLLERS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('design-container');
+            if (!container) return;
+
+            // --- Scroll Progress Bar & Back to Top ---
+            const progressBar = document.getElementById('scroll-progress-bar');
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            function onScrollEvents() {
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                
+                if (progressBar) progressBar.style.width = `${scrollPercent}%`;
+                
+                if (backToTopBtn) {
+                    if (scrollTop > 400) backToTopBtn.classList.add('show');
+                    else backToTopBtn.classList.remove('show');
+                }
+            }
+            window.addEventListener('scroll', onScrollEvents);
+            
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // --- Typing Animation (Hero) ---
+            const textArray = ["IT Talent Acquisition", "Boolean Sourcing Pro", "Staffing Strategist"];
+            let arrayIndex = 0;
+            let charIndex = 0;
+            const targetEl = document.getElementById('typed-text');
+            
+            function type() {
+                if (charIndex < textArray[arrayIndex].length) {
+                    if (targetEl) targetEl.textContent += textArray[arrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(erase, 1500);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    if (targetEl) targetEl.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, 500);
+                } else {
+                    arrayIndex = (arrayIndex + 1) % textArray.length;
+                    setTimeout(type, 500);
+                }
+            }
+            if(targetEl) setTimeout(type, 1000);
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            function revealOnScroll() {
+                for (let i = 0; i < revealElements.length; i++) {
+                    let windowHeight = window.innerHeight;
+                    let elementTop = revealElements[i].getBoundingClientRect().top;
+                    let elementVisible = 100;
+                    if (elementTop < windowHeight - elementVisible) {
+                        revealElements[i].classList.add('active');
+                    }
+                }
+            }
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // First pass run
+
+            // --- Mobile Navigation Bar Controls ---
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    const icon = navToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-times');
+                    }
+                });
+            }
+            
+            // --- Active Nav Links & Mobile Auto-Collapse ---
+            const navLinks = document.querySelectorAll('.nav__link');
+            function closeMenu() {
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = navToggle.querySelector('i');
+                    if(icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+
+            function updateActiveLinkState() {
+                let currentSectionId = '';
+                const sections = document.querySelectorAll('section[id]');
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 100) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(currentSectionId)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                    closeMenu();
+                });
+            });
+
+            window.addEventListener('scroll', updateActiveLinkState);
+
+            // --- Theme Switcher Core Operations ---
+            const themeButtons = container.querySelectorAll('.theme-btn');
+            const defaultTheme = container.dataset.theme || 'dark';
+            const savedTheme = localStorage.getItem('portfolio_theme_hr') || defaultTheme;
+            
+            function applyTheme(themeName) {
+                container.setAttribute('data-theme', themeName);
+                themeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === themeName));
+            }
+            applyTheme(savedTheme);
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const selectedTheme = button.dataset.theme;
+                    localStorage.setItem('portfolio_theme_hr', selectedTheme);
+                    applyTheme(selectedTheme);
+                });
+            });
+
+            // --- Contact Mailto Integrator Handler ---
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    const subject = `Talent Sourcing Inquiry from ${name}`;
+                    const body = `${message}\n\nReach back at:\nSender Name: ${name}\nSender Corporate Email: ${email}`;
+                    window.location.href = `mailto:abhi.anand431@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                });
+            }
+        });
+
+        // --- Experience Section Tab Selector Function ---
+        function switchExpTab(event, panelId) {
+            // Hide all experience content panels
+            const panels = document.querySelectorAll('.exp-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            // Remove active style from all pill buttons
+            const pills = document.querySelectorAll('.tab-pill');
+            pills.forEach(pill => pill.classList.remove('active'));
+
+            // Activate specific panel and target pill button
+            document.getElementById(panelId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
